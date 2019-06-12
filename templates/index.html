@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Rock Paper Scissors | RPSBOT_9000</title>
+  </head>
+  <body>
+
+    <div class="page-header text-center text-white" style="background-color: #696969;">
+      <br>
+      <h5 class="font-weight-bolder">Rock Paper Scissors vs 🤖</h5>
+      <br>
+    </div>
+
+    <br>
+
+    <div class="container text-center">
+      <!-- https://stackoverflow.com/a/19794878/3731467 -->
+      <p class="font-weight-bold">Choose wisely...</p>
+      <form method="POST" action="/">
+          <input type="submit" class="btn btn-outline-info btn-circle btn-lg" name="submit" value="👊">
+          <input type="submit" class="btn btn-outline-info btn-circle btn-lg" name="submit" value="✋">
+          <input type="submit" class="btn btn-outline-info btn-circle btn-lg" name="submit" value="✌️">
+      </form>
+    </div>
+    <p></p>
+
+    {% if game %}
+    <div class="container text-center rounded" style="background-color: #FFFFE0; width:70%">
+      <div class="row">
+        <div class="col rounded" style="background-color: #f7e6e1; height: 55px; letter-spacing: 4px;">
+          <p></p>
+          <p>Round <font color="black">{{ game_round }}</font></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p></p>
+           👩‍💻 chose:
+          <p><font color="teal">{{ game['player'] }}</font></p>
+        </div>
+        <div class="col">
+          <div class="col">
+          <p></p>
+             🤖 chose:
+            <p><font color="teal">{{ game['bot'] }}</font></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p>Outcome: <font color="red">{{ game['result'] }}</font></p>
+        </div>
+      </div>
+    </div>
+    <p></p>
+    <div class="container text-center">
+      <form method="POST" action="/">
+        <input type="submit" class="btn btn-outline-info btn" name="submit" value="show results">
+      </form>
+    </div>
+    {% endif %}
+
+    <p></p>
+    {% if print_results %}
+    <div class="container text-center rounded" style="background-color: #FFFFE0; width:50%">
+      <div class="row">
+        <div class="col rounded" style="background-color: #f7e6e1; height: 55px; letter-spacing: 4px;">
+          <p></p>
+          <p>Results</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col" style="letter-spacing: 4px">
+          <p></p>
+          WIN
+          <p><font color="teal">{{ results.count('win') }}</font></p>
+          <p><font color="teal">({{ ( (results.count('win') / (results.count('win')+results.count('lose')) )*100)|round(1) }}%)</font></p>
+        </div>
+        <div class="col" style="letter-spacing: 4px">
+          <p></p>
+          TIE
+          <p><font color="teal">{{ results.count('tie') }}</font></p>
+        </div>
+        <div class="col" style="letter-spacing: 4px">
+          <p></p>
+          LOSE
+          <p><font color="teal">{{ results.count('lose') }}</font></p>
+          <p><font color="teal">({{ ( (results.count('lose') / (results.count('win')+results.count('lose')) )*100)|round(1) }}%)</font></p>
+        </div>
+      </div>
+    {% endif %}
+
+    <p></p>
+
+  </body>
+</html>
