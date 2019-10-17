@@ -5,13 +5,13 @@
 
 ## Screenshots
 
-Start of game:
+<b>Start of game:</b><br>
 <img src="./images/start.png" alt="start" width="650"/>
 
-End of Round 1:
+<b>End of Round 1:</b><br>
 <img src="./images/round1.png" alt="round1" width="650"/>
 
-End of Round 35:
+<b>End of Round 35:</b><br>
 <img src="./images/round35.png" alt="round35" width="650"/>
 
 ## Future Work
